@@ -6,7 +6,6 @@ events.on("exec", (e, project) => {
 })
 
 
-
 events.on("push", (e, project) => {
   console.log("received push for commit " + e.commit)
 
