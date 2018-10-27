@@ -15,7 +15,11 @@ events.on("push", (e, project) => {
   ]
 
   testJob.run().then( () => {
-    events.emit("test-done", e, project)
+    console.log('I ran successfully. Thanks')
+    //events.emit("test-done", e, project)
+  }).catch(e => {
+    console.log(e);
+    console.log('I have an error. Sorry');
   })
 })
 
@@ -63,7 +67,7 @@ events.on("build-done", (e, project) => {
   })
 })
 
-events.on("error", (e, project) => {
+events.on("error1", (e, project) => { //disabled
   console.log("Notifying Slack of failure")
 
   var slack = new Job("slack-notify", "technosophos/slack-notify:latest", ["/slack-notify"])
@@ -79,7 +83,7 @@ events.on("error", (e, project) => {
   slack.run()
 })
 
-events.on("success", (e, project) => {
+events.on("success1", (e, project) => { //disabled
   console.log("Notifying Slack of success")
 
   var slack = new Job("slack-notify", "technosophos/slack-notify:latest", ["/slack-notify"])
