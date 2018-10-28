@@ -14,10 +14,7 @@ events.on("push", (e, project) => {
   testJob.image = "python:3"
 
   testJob.tasks = [
-    "cd /src/",
-    "pip install -r requirements.txt",
-    "cd /src/",
-    "python setup.py test"
+    "echo hello"
   ]
 
   testJob.run().then( () => {
